@@ -114,10 +114,11 @@
       <div class="box">
         <h3>2. إضافة Flathub</h3>
         <pre>
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo</pre
+            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          </pre
         >
         <button
-          onclick="copyCommand('flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo')"
+          onclick="copyCommand('flatpak remote-add --if-not-exists flathub https: //flathub.org/repo/flathub.flatpakrepo')"
         >
           Copy Command
         </button>
@@ -149,10 +150,10 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
         navigator.clipboard.writeText(command);
 
         let messageBox = document.getElementById("copyMessage");
-        messageBox.classList.add("show"); // إظهار الرسالة مع تأثير التلاشي
+        messageBox.classList.add("show");
 
         setTimeout(() => {
-          messageBox.classList.remove("show"); // تفعيل تأثير التلاشي التدريجي
+          messageBox.classList.remove("show");
         }, 2000);
       }
     </script>
