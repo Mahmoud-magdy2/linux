@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solve software installation problems on Linux</title>
+    <link rel="icon" href="./img/linux_6124995.png" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #04030f;
+        color: #f4f6f6;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 80%;
+        margin: 30px auto;
+        padding: 20px;
+        background: rgba(244, 246, 246, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        color: #090b0b;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .box {
+        width: 90%;
+        margin: 10px;
+        padding: 15px;
+        background: #776885;
+        border-radius: 10px;
+        transition: transform 0.3s, background 0.3s;
+        color: white;
+      }
+      .box:hover {
+        transform: scale(1.05);
+        background: #675775;
+      }
+      button {
+        background: #f4f6f6;
+        color: #090b0b;
+        padding: 12px;
+        border: none;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background: #dde1e1;
+      }
+      pre {
+        background: #090b0b;
+        color: #f4f6f6;
+        padding: 12px;
+        border-radius: 5px;
+        text-align: left;
+        overflow-x: auto;
+        word-wrap: break-word;
+      }
+      .copy-message {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: black;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 20px;
+        font-size: 18px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .copy-message img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: white;
+        padding: 5px;
+      }
+      .copy-message.show {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>حل مشاكل تثبيت البرامج على لينكس</h1>
+    <div class="container">
+      <div class="box">
+        <h2>ما هو Flatpak؟</h2>
+        <p>
+          Flatpak هو نظام حزم مستقل يسمح لك بتثبيت التطبيقات على مختلف توزيعات
+          لينكس بدون مشاكل توافق.
+        </p>
+      </div>
+      <div class="box">
+        <h3>1. تثبيت أو تحديث Flatpak</h3>
+        <pre>sudo apt update && sudo apt install flatpak -y</pre>
+        <button
+          onclick="copyCommand('sudo apt update && sudo apt install flatpak -y')"
+        >
+          Copy Command
+        </button>
+      </div>
+      <div class="box">
+        <h3>2. إضافة Flathub</h3>
+        <pre>
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo</pre
+        >
+        <button
+          onclick="copyCommand('flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo')"
+        >
+          Copy Command
+        </button>
+      </div>
+      <div class="box">
+        <h3>3. تثبيت البرامج باستخدام Flatpak</h3>
+        <p>لتثبيت <strong>Discord</strong>:</p>
+        <pre>flatpak install flathub com.discordapp.Discord</pre>
+        <button
+          onclick="copyCommand('flatpak install flathub com.discordapp.Discord')"
+        >
+          Copy Command
+        </button>
+        <p>لتثبيت <strong>Zoom</strong>:</p>
+        <pre>flatpak install flathub us.zoom.Zoom</pre>
+        <button onclick="copyCommand('flatpak install flathub us.zoom.Zoom')">
+          Copy Command
+        </button>
+      </div>
+    </div>
+
+    <div id="copyMessage" class="copy-message">
+      <img src="./img/Check_out.svg" alt="✔" />
+      <span>Command copied successfully!</span>
+    </div>
+
+    <script>
+      function copyCommand(command) {
+        navigator.clipboard.writeText(command);
+
+        let messageBox = document.getElementById("copyMessage");
+        messageBox.classList.add("show"); // إظهار الرسالة مع تأثير التلاشي
+
+        setTimeout(() => {
+          messageBox.classList.remove("show"); // تفعيل تأثير التلاشي التدريجي
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>
